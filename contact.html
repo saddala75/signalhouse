@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us – Signal House Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Logo-inspired colors */
+      --deep-blue: #0A4B78;
+      --ocean-blue: #2B88C7;
+      --bright-orange: #FF6B35;
+      --warm-orange: #FF8C42;
+      --sunset-red: #E74C3C;
+
+      /* UI colors */
+      --light-bg: #F8FAFB;
+      --light-card: #FFFFFF;
+      --text-dark: #0E1126;
+      --text-muted: #556B7A;
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --max-width: 1060px;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      margin: 0;
+      background: var(--light-bg);
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      padding: 20px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--light-card);
+      border-bottom: 1px solid #e7e7ef;
+      position: sticky; top: 0; z-index: 20;
+    }
+
+    .logo-wrap {
+      display: flex; align-items: center; gap: 12px;
+    }
+
+    .logo-icon {
+      height: 70px;
+      width: auto;
+    }
+
+    .logo-icon img {
+      height: 100%;
+      width: auto;
+      display: block;
+    }
+
+    .brand-image {
+      height: 70px;
+      width: auto;
+    }
+
+    .brand-image img {
+      height: 100%;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex; gap: 22px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .nav-links a {
+      transition: color 0.3s ease;
+      text-decoration: none;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--bright-orange);
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .page-title {
+      font-size: 3rem;
+      line-height: 1.12;
+      margin: 0 0 18px 0;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-dark);
+    }
+
+    .page-title span {
+      background: linear-gradient(135deg, var(--bright-orange), var(--ocean-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* CONTACT FORM */
+    .contact-card {
+      background: var(--light-card);
+      border-radius: var(--radius-xl);
+      padding: 48px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .form-label .required {
+      color: var(--bright-orange);
+    }
+
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #e7e7ef;
+      border-radius: var(--radius-md);
+      font-family: "Inter", sans-serif;
+      font-size: 1rem;
+      color: var(--text-dark);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: var(--ocean-blue);
+      box-shadow: 0 0 0 3px rgba(43, 136, 199, 0.1);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    /* CAPTCHA */
+    .captcha-container {
+      margin: 28px 0;
+      display: inline-block;
+    }
+
+    .captcha-box {
+      border: 2px solid #e7e7ef;
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      background: var(--light-bg);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .captcha-box:hover {
+      border-color: var(--ocean-blue);
+      background: white;
+    }
+
+    .captcha-checkbox {
+      width: 26px;
+      height: 26px;
+      border: 2px solid #d0d0d8;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .captcha-box:hover .captcha-checkbox {
+      border-color: var(--ocean-blue);
+    }
+
+    .captcha-checkbox.checked {
+      background: var(--ocean-blue);
+      border-color: var(--ocean-blue);
+    }
+
+    .captcha-checkbox.checked::after {
+      content: '✓';
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .captcha-text {
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    .captcha-logo {
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
+    }
+
+    .captcha-logo-img {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--bright-orange), var(--ocean-blue));
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .captcha-privacy {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 6px;
+    }
+
+    .captcha-privacy a {
+      color: var(--ocean-blue);
+      text-decoration: none;
+    }
+
+    /* SUBMIT BUTTON */
+    .submit-btn {
+      background: linear-gradient(135deg, var(--bright-orange), var(--sunset-red));
+      padding: 16px 40px;
+      border-radius: 999px;
+      color: white;
+      font-weight: 600;
+      font-size: 1.05rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 28px rgba(255, 107, 53, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      width: 100%;
+      margin-top: 12px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(255, 107, 53, 0.4);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* INFO SECTION */
+    .info-section {
+      background: linear-gradient(135deg, var(--deep-blue), var(--ocean-blue));
+      margin-top: 64px;
+      padding: 48px;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 8px 26px rgba(10, 75, 120, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, var(--bright-orange) 0%, transparent 50%);
+      opacity: 0.1;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .info-item {
+      color: white;
+    }
+
+    .info-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .info-text {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .info-text a {
+      color: var(--warm-orange);
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .info-text a:hover {
+      opacity: 0.8;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 40px 24px 60px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 840px) {
+      .page-title { font-size: 2.4rem; }
+      .contact-card { padding: 32px 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      .info-grid { grid-template-columns: 1fr; }
+      .logo-icon, .brand-image { height: 50px; }
+      nav { padding: 16px 20px; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo-wrap">
+    <div class="logo-icon">
+      <img src="studiosmalllogo.png" alt="SignalHouse Logo">
+    </div>
+    <div class="brand-image">
+      <img src="textlogosmall.png" alt="SignalHouse">
+    </div>
+  </div>
+
+  <div class="nav-links">
+    <a href="index-variant.html">Home</a>
+    <a href="#services">Services</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact Us</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div class="container">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <h1 class="page-title">Get in <span>Touch</span></h1>
+    <p class="page-subtitle">
+      Let's discuss how we can help you communicate clearly, consistently, and creatively.
+    </p>
+  </div>
+
+  <!-- CONTACT FORM -->
+  <div class="contact-card">
+    <form id="contactForm">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">
+            First Name <span class="required">*</span>
+          </label>
+          <input type="text" class="form-input" name="firstName" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">
+            Last Name <span class="required">*</span>
+          </label>
+          <input type="text" class="form-input" name="lastName" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">
+          Email Address <span class="required">*</span>
+        </label>
+        <input type="email" class="form-input" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">
+          Company Name
+        </label>
+        <input type="text" class="form-input" name="company">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">
+          How can we help? <span class="required">*</span>
+        </label>
+        <select class="form-select" name="service" required>
+          <option value="">Select a service...</option>
+          <option value="campaign">Campaign Strategy</option>
+          <option value="content">Content Creation</option>
+          <option value="automation">Automation</option>
+          <option value="multiple">Multiple Services</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">
+          Tell us about your project <span class="required">*</span>
+        </label>
+        <textarea class="form-textarea" name="message" required placeholder="Share your goals, challenges, and what success looks like for your team..."></textarea>
+      </div>
+
+      <!-- CAPTCHA -->
+      <div class="captcha-container">
+        <div class="captcha-box" id="captchaBox">
+          <div class="captcha-checkbox" id="captchaCheckbox"></div>
+          <div class="captcha-text">I'm not a robot</div>
+          <div class="captcha-logo">
+            <div class="captcha-logo-img">SH</div>
+            <div class="captcha-privacy">
+              <a href="#">Privacy</a> - <a href="#">Terms</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn" disabled>
+        Send Message →
+      </button>
+
+    </form>
+  </div>
+
+  <!-- INFO SECTION -->
+  <div class="info-section">
+    <div class="info-grid">
+
+      <div class="info-item">
+        <div class="info-title">Email Us</div>
+        <div class="info-text">
+          <a href="mailto:hello@signalhouse.studio">hello@signalhouse.studio</a>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-title">Call Us</div>
+        <div class="info-text">
+          <a href="tel:+15125551234">+1 (512) 555-1234</a>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-title">Location</div>
+        <div class="info-text">
+          Round Rock, Texas<br>United States
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © <script>document.write(new Date().getFullYear())</script> Signal House Studio. All rights reserved.
+</footer>
+
+<script>
+  // Captcha functionality
+  const captchaBox = document.getElementById('captchaBox');
+  const captchaCheckbox = document.getElementById('captchaCheckbox');
+  const submitBtn = document.getElementById('submitBtn');
+  let isCaptchaChecked = false;
+
+  captchaBox.addEventListener('click', function() {
+    isCaptchaChecked = !isCaptchaChecked;
+
+    if (isCaptchaChecked) {
+      captchaCheckbox.classList.add('checked');
+      submitBtn.disabled = false;
+    } else {
+      captchaCheckbox.classList.remove('checked');
+      submitBtn.disabled = true;
+    }
+  });
+
+  // Form submission
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    if (!isCaptchaChecked) {
+      alert('Please verify that you are human.');
+      return;
+    }
+
+    // Get form data
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData);
+
+    // Here you would typically send the data to your server
+    console.log('Form submitted:', data);
+
+    // Show success message
+    alert('Thank you for your message! We\'ll get back to you soon.');
+
+    // Reset form
+    this.reset();
+    captchaCheckbox.classList.remove('checked');
+    isCaptchaChecked = false;
+    submitBtn.disabled = true;
+  });
+</script>
+
+</body>
+</html>

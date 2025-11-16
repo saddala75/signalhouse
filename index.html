@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SignalHouse – Creative Systems. Clear Signals.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Logo-inspired colors */
+      --deep-blue: #0A4B78;
+      --ocean-blue: #2B88C7;
+      --bright-orange: #FF6B35;
+      --warm-orange: #FF8C42;
+      --sunset-red: #E74C3C;
+
+      /* UI colors */
+      --light-bg: #F8FAFB;
+      --light-card: #FFFFFF;
+      --text-dark: #0E1126;
+      --text-muted: #556B7A;
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --max-width: 1060px;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      margin: 0;
+      background: var(--light-bg);
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      padding: 20px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--light-card);
+      border-bottom: 1px solid #e7e7ef;
+      position: sticky; top: 0; z-index: 20;
+    }
+
+    .logo-wrap {
+      display: flex; align-items: center; gap: 12px;
+    }
+
+    .logo-icon {
+      height: 70px;
+      width: auto;
+    }
+
+    .logo-icon img {
+      height: 100%;
+      width: auto;
+      display: block;
+    }
+
+    .brand-image {
+      height: 70px;
+      width: auto;
+    }
+
+    .brand-image img {
+      height: 100%;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex; gap: 22px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .nav-links a {
+      transition: color 0.3s ease;
+      text-decoration: none;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--bright-orange);
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+
+    /* HERO SECTION */
+    .hero-card {
+      background: var(--light-card);
+      border-radius: var(--radius-xl);
+      padding: 60px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      max-width: 480px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      line-height: 1.12;
+      margin: 0 0 18px 0;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-dark);
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, var(--bright-orange), var(--ocean-blue));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtext {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .hero-btn {
+      background: linear-gradient(135deg, var(--bright-orange), var(--sunset-red));
+      padding: 14px 26px;
+      border-radius: 999px;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 28px rgba(255, 107, 53, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(255, 107, 53, 0.4);
+    }
+
+    .signal-art {
+      position: absolute;
+      bottom: -40px;
+      right: -40px;
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(135deg, var(--warm-orange), var(--ocean-blue));
+      border-radius: 50%;
+      opacity: 0.15;
+    }
+
+    /* SERVICES SECTION */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .services-grid {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      background: var(--light-card);
+      padding: 28px;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 6px 22px rgba(0,0,0,0.05);
+      border-top: 3px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .service-card:nth-child(1) {
+      border-top-color: var(--bright-orange);
+    }
+
+    .service-card:nth-child(2) {
+      border-top-color: var(--warm-orange);
+    }
+
+    .service-card:nth-child(3) {
+      border-top-color: var(--ocean-blue);
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    }
+
+    .service-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .service-card:nth-child(1) .service-title {
+      color: var(--bright-orange);
+    }
+
+    .service-card:nth-child(2) .service-title {
+      color: var(--warm-orange);
+    }
+
+    .service-card:nth-child(3) .service-title {
+      color: var(--ocean-blue);
+    }
+
+    .service-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* CTA SECTION */
+    .cta-card {
+      background: linear-gradient(135deg, var(--deep-blue), var(--ocean-blue));
+      margin-top: 64px;
+      padding: 48px;
+      border-radius: var(--radius-xl);
+      text-align: center;
+      box-shadow: 0 8px 26px rgba(10, 75, 120, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, var(--bright-orange) 0%, transparent 50%);
+      opacity: 0.1;
+    }
+
+    .cta-card h3 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      color: white;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-card p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 1.05rem;
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-btn {
+      margin-top: 16px;
+      background: linear-gradient(135deg, var(--bright-orange), var(--warm-orange));
+      padding: 14px 32px;
+      border-radius: 999px;
+      color: white;
+      font-weight: 600;
+      border: none;
+      font-size: 1.05rem;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 8px 22px rgba(255, 107, 53, 0.3);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(255, 107, 53, 0.4);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 40px 24px 60px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 840px) {
+      .hero-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .signal-art { display: none; }
+      h1 { font-size: 2.4rem; }
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo-wrap">
+    <div class="logo-icon">
+      <img src="studiosmalllogo.png" alt="SignalHouse Logo">
+    </div>
+    <div class="brand-image">
+      <img src="textlogosmall.png" alt="SignalHouse">
+    </div>
+  </div>
+
+  <div class="nav-links">
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero-card">
+    <div class="hero-left">
+      <h1>Creative Systems.<br><span>Clear Signals.</span></h1>
+      <p class="hero-subtext">
+        We blend human creativity with intelligent systems to help brands communicate clearly, consistently, and creatively.
+      </p>
+      <a href="contact.html"><button class="hero-btn">Work with us</button></a>
+    </div>
+
+    <div class="signal-art"></div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" style="margin-top:48px;">
+    <h2 class="section-title">What we do</h2>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-title">Campaign Strategy</div>
+        <p class="service-desc">
+          Clear messaging & campaigns rooted in simplicity, insight, and strong creative direction.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-title">Content Creation</div>
+        <p class="service-desc">
+          Short-form videos, carousels, scripts, and educational content with a consistent brand voice.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-title">Automation</div>
+        <p class="service-desc">
+          Repeatable systems using AI that help your team scale content without burning out.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact">
+    <div class="cta-card">
+      <h3>Let's make the signal clear.</h3>
+      <p>
+        Tell us about your product, goals, and what "good" looks like for your team.
+      </p>
+      <a href="contact.html"><button class="cta-btn">Get in touch →</button></a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  © <script>document.write(new Date().getFullYear())</script> SignalHouse. All rights reserved.
+</footer>
+
+</body>
+</html>
