@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services – SignalHouse</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #fde68a 0%, #c084fc 35%, #7c3aed 65%, #1e1b4b 100%);
+    }
+    @keyframes float-gentle {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    .animate-float-gentle {
+      animation: float-gentle 4s ease-in-out infinite;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bright-orange': '#FF6B35',
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    // Navigation Component
+    const Navigation = () => {
+      return (
+        <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-6 bg-white/90 backdrop-blur-sm">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <span className="text-xl font-bold text-black">SignalHouse</span>
+              </div>
+              
+              <div className="hidden md:flex items-center gap-8 text-black/80 font-medium">
+                <a href="index.html" className="hover:text-black transition-colors">Home</a>
+                <a href="services.html" className="hover:text-black transition-colors">Solutions</a>
+                <a href="contact.html" className="hover:text-black transition-colors">Contact</a>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <a href="contact.html" className="bg-black hover:bg-gray-900 text-white px-6 py-2.5 rounded-full font-semibold transition-all">
+                  Get Started
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      );
+    };
+
+    // Hero Section
+    const Hero = () => {
+      return (
+        <section className="gradient-bg pt-32 pb-24 px-8">
+          <div className="max-w-7xl mx-auto text-center">
+            <div className="animate-float-gentle">
+              <h1 className="text-6xl md:text-7xl font-extrabold leading-tight mb-6">
+                <span className="text-black">Our </span>
+                <span className="text-white">Services</span>
+              </h1>
+              <p className="text-xl text-black/80 max-w-3xl mx-auto leading-relaxed">
+                We combine strategic thinking, creative execution, and intelligent automation to help your brand cut through the noise and connect with your audience.
+              </p>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    // Services Section
+    const Services = () => {
+      const services = [
+        {
+          icon: "🎯",
+          title: "Campaign Strategy",
+          description: "Great campaigns don't happen by accident. They're built on clear insights, strong creative direction, and messaging that resonates. We help you define what you stand for, who you're talking to, and how to say it in a way that cuts through the noise.",
+          features: [
+            { title: "Brand Positioning", desc: "Define your unique value and how you stand out in the market" },
+            { title: "Messaging Framework", desc: "Develop clear, consistent messaging that resonates with your audience" },
+            { title: "Campaign Planning", desc: "Build integrated campaigns with clear objectives and KPIs" },
+            { title: "Audience Research", desc: "Understand who you're talking to and what makes them tick" }
+          ],
+          gradient: "from-purple-600 to-indigo-600",
+          bgGradient: "from-purple-50 to-indigo-50"
+        },
+        {
+          icon: "✨",
+          title: "Content Creation",
+          description: "Content is how you show up in the world. Whether it's a 30-second video, a carousel post, or an educational guide, we create content that reflects your brand voice, engages your audience, and drives real results. Every piece is crafted with intention and optimized for performance.",
+          features: [
+            { title: "Video Production", desc: "Short-form videos optimized for social platforms and engagement" },
+            { title: "Social Media Content", desc: "Carousels, graphics, and posts designed to stop the scroll" },
+            { title: "Script Writing", desc: "Compelling scripts that communicate your message clearly and persuasively" },
+            { title: "Educational Content", desc: "Guides, tutorials, and resources that establish your expertise" }
+          ],
+          gradient: "from-orange-500 to-pink-500",
+          bgGradient: "from-orange-50 to-pink-50"
+        },
+        {
+          icon: "⚡",
+          title: "AI Automation",
+          description: "Scaling content shouldn't mean sacrificing quality or burning out your team. We build intelligent systems and workflows that handle the repetitive work, so you can focus on strategy and creativity. From AI-assisted content generation to automated publishing, we help you do more with less.",
+          features: [
+            { title: "AI Content Workflows", desc: "Smart systems that assist in content creation while maintaining your brand voice" },
+            { title: "Publishing Automation", desc: "Schedule and distribute content across platforms efficiently" },
+            { title: "Content Repurposing", desc: "Turn one piece of content into multiple formats automatically" },
+            { title: "Performance Tracking", desc: "Automated reporting to understand what's working and optimize accordingly" }
+          ],
+          gradient: "from-blue-500 to-cyan-500",
+          bgGradient: "from-blue-50 to-cyan-50"
+        }
+      ];
+
+      return (
+        <section className="py-24 px-8 bg-white">
+          <div className="max-w-7xl mx-auto space-y-16">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className={`bg-gradient-to-br ${service.bgGradient} rounded-3xl p-8 md:p-12 border-2 border-gray-100 hover:border-gray-200 transition-all duration-500 hover:shadow-2xl`}
+              >
+                {/* Service Header */}
+                <div className="flex items-start gap-6 mb-8">
+                  <div className={`w-20 h-20 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center text-4xl flex-shrink-0 shadow-lg`}>
+                    {service.icon}
+                  </div>
+                  <div className="flex-1">
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                      {service.title}
+                    </h2>
+                    <p className="text-lg text-gray-700 leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Features Grid */}
+                <div className="grid md:grid-cols-2 gap-6 mt-8">
+                  {service.features.map((feature, idx) => (
+                    <div key={idx} className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 hover:bg-white transition-all">
+                      <div className="flex items-start gap-4">
+                        <div className={`w-8 h-8 bg-gradient-to-br ${service.gradient} rounded-full flex items-center justify-center flex-shrink-0`}>
+                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-gray-900 mb-2">{feature.title}</h3>
+                          <p className="text-sm text-gray-600 leading-relaxed">{feature.desc}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      );
+    };
+
+    // Process Section
+    const Process = () => {
+      return (
+        <section className="py-24 px-8 bg-gradient-to-br from-gray-50 to-gray-100">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl font-bold text-gray-900 mb-4">How We Work</h2>
+              <p className="text-xl text-gray-600">A proven process that delivers results</p>
+            </div>
+
+            <div className="grid md:grid-cols-4 gap-6">
+              {[
+                { num: "01", title: "Discovery", desc: "Deep dive into your business, goals, and challenges", color: "from-purple-500 to-indigo-500" },
+                { num: "02", title: "Strategy", desc: "Crafting a comprehensive roadmap for success", color: "from-blue-500 to-cyan-500" },
+                { num: "03", title: "Execution", desc: "Bringing your vision to life with precision", color: "from-orange-500 to-pink-500" },
+                { num: "04", title: "Growth", desc: "Continuous improvement based on data and results", color: "from-green-500 to-teal-500" }
+              ].map((step, index) => (
+                <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all">
+                  <div className={`text-6xl font-light bg-gradient-to-br ${step.color} bg-clip-text text-transparent mb-4`}>
+                    {step.num}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{step.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    // CTA Section
+    const CTA = () => {
+      return (
+        <section className="py-24 px-8 gradient-bg">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-5xl font-extrabold leading-tight mb-6">
+              <span className="text-black">Ready to get </span>
+              <span className="text-white">started?</span>
+            </h2>
+            <p className="text-xl text-black/80 mb-10 max-w-2xl mx-auto">
+              Let's talk about your goals and how we can help you communicate more clearly, consistently, and creatively.
+            </p>
+            <a
+              href="contact.html"
+              className="inline-flex items-center gap-2 bg-black hover:bg-gray-900 text-white px-10 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl"
+            >
+              Schedule a Consultation
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+          </div>
+        </section>
+      );
+    };
+
+    // Footer
+    const Footer = () => {
+      return (
+        <footer className="bg-gray-900 text-white py-12 px-8">
+          <div className="max-w-7xl mx-auto text-center">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <span className="text-xl font-bold">SignalHouse</span>
+            </div>
+            <div className="text-white/60 text-sm">
+              © {new Date().getFullYear()} SignalHouse. Creative Systems. Clear Signals.
+            </div>
+          </div>
+        </footer>
+      );
+    };
+
+    // Main App
+    const App = () => {
+      return (
+        <>
+          <Navigation />
+          <Hero />
+          <Services />
+          <Process />
+          <CTA />
+          <Footer />
+        </>
+      );
+    };
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>

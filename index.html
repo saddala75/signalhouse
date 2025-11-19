@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignalHouse – Creative Systems. Clear Signals.</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    @keyframes orbit {
+      from { transform: rotate(0deg) translateX(200px) rotate(0deg); }
+      to { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+    }
+    @keyframes orbit-outer {
+      from { transform: rotate(0deg) translateX(280px) rotate(0deg); }
+      to { transform: rotate(360deg) translateX(280px) rotate(-360deg); }
+    }
+    @keyframes float-gentle {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    .orbit-item {
+      animation: orbit 20s linear infinite;
+    }
+    .orbit-item:nth-child(2) { animation-delay: -5s; }
+    .orbit-item:nth-child(3) { animation-delay: -10s; }
+    .orbit-item:nth-child(4) { animation-delay: -15s; }
+    .orbit-outer-item {
+      animation: orbit-outer 25s linear infinite;
+    }
+    .orbit-outer-item:nth-child(1) { animation-delay: -3s; }
+    .orbit-outer-item:nth-child(2) { animation-delay: -8s; }
+    .orbit-outer-item:nth-child(3) { animation-delay: -13s; }
+    .orbit-outer-item:nth-child(4) { animation-delay: -18s; }
+    .animate-float-gentle {
+      animation: float-gentle 4s ease-in-out infinite;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #fde68a 0%, #c084fc 35%, #7c3aed 65%, #1e1b4b 100%);
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bright-orange': '#FF6B35',
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    // Navigation Component
+    const Navigation = () => {
+      return (
+        <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <span className="text-xl font-bold text-black">SignalHouse</span>
+              </div>
+              
+              <div className="hidden md:flex items-center gap-8 text-black/80 font-medium">
+                <a href="#team" className="hover:text-black transition-colors">Your Team</a>
+                <a href="#services" className="hover:text-black transition-colors">Solutions</a>
+                <a href="#blog" className="hover:text-black transition-colors">Blog</a>
+                <a href="#pricing" className="hover:text-black transition-colors">Pricing</a>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <a href="#login" className="text-black/80 hover:text-black font-medium transition-colors">
+                  Log In
+                </a>
+                <a href="#signup" className="bg-black hover:bg-gray-900 text-white px-6 py-2.5 rounded-full font-semibold transition-all">
+                  Join Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      );
+    };
+
+    // Hero Section with Orbital Visualization
+    const Hero = () => {
+      return (
+        <section className="min-h-screen gradient-bg relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-8 py-32 grid lg:grid-cols-2 gap-12 items-center relative">
+            
+            {/* Left side - Content */}
+            <div className="space-y-8 animate-float-gentle">
+              <h1 className="text-6xl lg:text-7xl font-extrabold leading-tight">
+                <span className="text-black">Creative Systems</span>
+                <br />
+                <span className="text-black">You Thought Was</span>
+                <br />
+                <span className="text-black">Out of Reach –</span>
+                <br />
+                <span className="text-white">Now Just One</span>
+                <br />
+                <span className="text-white">Click Away!</span>
+              </h1>
+              
+              <a href="#contact" className="inline-flex items-center gap-2 bg-black hover:bg-gray-900 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all group">
+                Start Project
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+
+              {/* Floating name tag */}
+              <div className="inline-flex items-center gap-2 bg-purple-500/90 text-white px-5 py-2.5 rounded-full backdrop-blur-sm animate-float-gentle" style={{animationDelay: '1s'}}>
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <span className="font-semibold">Trusted Partner</span>
+              </div>
+            </div>
+
+            {/* Right side - Orbital Visualization */}
+            <div className="relative h-[600px] flex items-center justify-center">
+              {/* Center stat */}
+              <div className="relative z-10 text-center">
+                <div className="text-7xl font-bold text-white mb-2">50+</div>
+                <div className="text-white/90 font-medium">Projects</div>
+              </div>
+
+              {/* Inner orbit ring */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-[400px] h-[400px] border-2 border-white/20 rounded-full"></div>
+                
+                {/* Inner orbit items */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="orbit-item absolute">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl shadow-2xl flex items-center justify-center">
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="orbit-item absolute">
+                    <div className="w-14 h-14 bg-white rounded-full shadow-2xl overflow-hidden">
+                      <div className="w-full h-full bg-gradient-to-br from-orange-300 to-pink-300"></div>
+                    </div>
+                  </div>
+                  <div className="orbit-item absolute">
+                    <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl shadow-2xl flex items-center justify-center">
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="orbit-item absolute">
+                    <div className="w-14 h-14 bg-white rounded-full shadow-2xl overflow-hidden">
+                      <div className="w-full h-full bg-gradient-to-br from-purple-300 to-blue-300"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Outer orbit ring */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-[560px] h-[560px] border-2 border-white/10 rounded-full"></div>
+                
+                {/* Outer orbit items */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="orbit-outer-item absolute">
+                    <div className="w-16 h-16 bg-white rounded-full shadow-2xl overflow-hidden border-4 border-white/50">
+                      <div className="w-full h-full bg-gradient-to-br from-blue-200 to-purple-200"></div>
+                    </div>
+                  </div>
+                  <div className="orbit-outer-item absolute">
+                    <div className="w-16 h-16 bg-black/80 backdrop-blur-sm rounded-2xl shadow-2xl flex items-center justify-center">
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="orbit-outer-item absolute">
+                    <div className="w-16 h-16 bg-white rounded-full shadow-2xl overflow-hidden border-4 border-white/50">
+                      <div className="w-full h-full bg-gradient-to-br from-green-200 to-teal-200"></div>
+                    </div>
+                  </div>
+                  <div className="orbit-outer-item absolute">
+                    <div className="w-16 h-16 bg-white rounded-full shadow-2xl overflow-hidden border-4 border-white/50">
+                      <div className="w-full h-full bg-gradient-to-br from-pink-200 to-rose-200"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Partner logos at bottom */}
+          <div className="absolute bottom-12 left-0 right-0">
+            <div className="max-w-7xl mx-auto px-8">
+              <div className="flex items-center justify-between opacity-40">
+                <div className="text-white/90 font-semibold text-sm">Campaign Pro</div>
+                <div className="text-white/90 font-semibold text-sm">ContentFlow</div>
+                <div className="text-white/90 font-semibold text-sm">AI.Studio</div>
+                <div className="text-white/90 font-semibold text-sm">BrandSync</div>
+                <div className="text-white/90 font-semibold text-sm">CreativeHub</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    // Services Section
+    const Services = () => {
+      return (
+        <section id="services" className="py-24 px-8 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl font-bold mb-4">Our Creative Solutions</h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Comprehensive services designed to elevate your brand
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  title: "Campaign Strategy",
+                  description: "Clear messaging and strategic direction that resonates with your target audience and drives measurable results.",
+                  gradient: "from-purple-500 to-indigo-500"
+                },
+                {
+                  title: "Content Creation",
+                  description: "Professional content across all formats - videos, graphics, scripts, and more with consistent brand voice.",
+                  gradient: "from-orange-500 to-pink-500"
+                },
+                {
+                  title: "AI Automation",
+                  description: "Smart systems that scale your content production and free your team to focus on creative strategy.",
+                  gradient: "from-blue-500 to-cyan-500"
+                }
+              ].map((service, index) => (
+                <div key={index} className="group bg-gradient-to-br from-gray-50 to-white p-8 rounded-3xl border-2 border-gray-100 hover:border-purple-200 hover:shadow-2xl transition-all duration-500">
+                  <div className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    // Stats Section
+    const Stats = () => {
+      return (
+        <section className="py-24 px-8 bg-gradient-to-br from-purple-600 to-indigo-700 text-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-4 gap-8 text-center">
+              <div>
+                <div className="text-6xl font-bold mb-3">50+</div>
+                <div className="text-white/90 text-lg">Projects Delivered</div>
+              </div>
+              <div>
+                <div className="text-6xl font-bold mb-3">95%</div>
+                <div className="text-white/90 text-lg">Client Satisfaction</div>
+              </div>
+              <div>
+                <div className="text-6xl font-bold mb-3">10+</div>
+                <div className="text-white/90 text-lg">Industries Served</div>
+              </div>
+              <div>
+                <div className="text-6xl font-bold mb-3">24/7</div>
+                <div className="text-white/90 text-lg">AI Support</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    // CTA Section
+    const CTA = () => {
+      return (
+        <section className="py-24 px-8 bg-white">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-5xl font-bold mb-6">
+              Ready to unlock your creative potential?
+            </h2>
+            <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+              Join hundreds of businesses that trust SignalHouse to deliver exceptional creative solutions.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="#contact" className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all shadow-lg hover:shadow-xl">
+                Start Your Project
+              </a>
+              <a href="#services" className="border-2 border-gray-300 hover:border-gray-400 text-gray-900 px-10 py-4 rounded-full font-semibold text-lg transition-all">
+                Explore Services
+              </a>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    // Footer
+    const Footer = () => {
+      return (
+        <footer className="bg-gray-900 text-white py-12 px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <span className="text-xl font-bold">SignalHouse</span>
+              </div>
+              
+              <div className="text-white/60 text-sm">
+                © {new Date().getFullYear()} SignalHouse. Creative Systems. Clear Signals.
+              </div>
+            </div>
+          </div>
+        </footer>
+      );
+    };
+
+    // Main App
+    const App = () => {
+      return (
+        <>
+          <Navigation />
+          <Hero />
+          <Services />
+          <Stats />
+          <CTA />
+          <Footer />
+        </>
+      );
+    };
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
